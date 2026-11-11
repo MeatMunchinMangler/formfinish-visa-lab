@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#101b27"/>
+  <meta name="description" content="Free private Vietnam e-visa photo and passport image prep. Crop, resize, compress and export JPEGs on your device. No uploads."/>
+  <meta property="og:title" content="FormFinish — Your visa photos, ready to go"/>
+  <meta property="og:description" content="Prepare visa and passport JPEGs privately. No uploads. No account."/>
+  <title>FormFinish — Private eVisa Photo Lab</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="FormFinish home"><span class="brandmark">F<span>✦</span></span><span class="brandtext">FormFinish<small>the eVisa photo lab</small></span></a>
+      <nav class="nav"><a href="#lab">The lab</a><a href="#dates">Stay dates</a><a href="#checks">Checklist</a><a href="#about">Privacy</a></nav>
+      <a class="nav-action" href="#lab">Get started <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow"><span class="live-dot"></span> PRIVATE BY DESIGN <span class="dot-separator">·</span> BUILT FOR YOUR NEXT MOVE</div>
+        <div class="hero-grid">
+          <div class="hero-copy"><h1>Next stop:<br/><em>everywhere.</em></h1><p>Spend less time wrestling with visa photos. Crop, compress and prepare your portrait and passport images in your browser, right where they belong.</p>
+            <div class="hero-actions"><a href="#lab" class="button primary">Prepare my photos <span aria-hidden="true">↗</span></a><span class="helper"><span class="shield">♢</span> No uploads. No account.</span></div>
+          </div>
+          <div class="travel-art" aria-hidden="true"><span class="art-caption">AN OPEN INVITATION TO GO</span><div class="passport-cover"><div class="cover-top"><span>FORM<br/>FINISH</span><span>✦</span></div><div class="cover-world">◎</div><div class="cover-label">PASSPORT TO POSSIBILITY</div></div><span class="stamp">VIET NAM<br/><b>READY</b><small>✳ ✳ ✳</small></span><div class="grid-orbit"></div></div>
+        </div>
+        <div class="hero-bottom"><span><b>01</b> Vietnam e-Visa presets</span><span><b>02</b> Works on your phone</span><span><b>03</b> Photos never leave your device</span></div>
+      </section>
+      <section id="lab" class="section lab-section">
+        <div class="section-heading"><div><span class="kicker">01 / THE PHOTO LAB</span><h2>Make your files <em>fit.</em></h2><p>No mystery dimensions or last-minute upload errors. Prepare a portrait and a passport-page JPEG in minutes.</p></div><span class="small-asterisk">✳</span></div>
+        <div class="lab-container">
+          <div class="lab-top"><div class="pill-tabs" role="tablist" aria-label="Document type"><button id="portrait-tab" class="tab selected" role="tab" aria-selected="true">01 · Portrait photo</button><button id="passport-tab" class="tab" role="tab" aria-selected="false">02 · Passport page</button></div><div class="mode-hint"><span class="indicator"></span><span id="mode-info">Vietnam · 2:3 ratio · JPEG</span></div></div>
+          <div class="lab-grid">
+            <div class="stage-column">
+              <div class="upload-zone" id="upload-zone"><input type="file" id="image-input" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif" aria-label="Choose image"/><div id="empty-stage" class="empty-stage"><div class="upload-illustration">↥</div><h3>Drop your photo here</h3><p>or <u>browse from your device</u></p><small>JPEG, PNG, WebP, or HEIC if your browser supports it</small></div><div id="canvas-stage" class="canvas-stage" hidden><canvas id="preview" width="420" height="630" aria-label="Crop preview"></canvas><div class="guide-note" id="guide-note">Move image to frame your face</div></div></div>
+              <div class="stage-bottom"><span id="source-meta">Your files stay on your device.</span><button id="replace-photo" class="quiet-button" hidden>Replace image ↻</button></div>
+              <p class="status" id="status" role="status" aria-live="polite"></p>
+            </div>
+            <div class="settings-column">
+              <div class="settings-label">YOUR EXPORT SETTINGS <span>✦</span></div>
+              <div class="setting"><label for="size">Output dimensions</label><select id="size"><option value="600x900">600 × 900 px — 2:3</option><option value="472x708">472 × 708 px — 2:3</option><option value="400x600">400 × 600 px — 2:3</option></select><small id="size-helper">4 × 6 cm shape is a 2:3 aspect ratio. Pixels are adjustable.</small></div>
+              <div class="setting"><label for="limit">Maximum file size</label><select id="limit"><option value="1900000">Under 2 MB</option><option value="499000">Under 500 KB</option><option value="199000">Under 200 KB</option><option value="49000">Under 50 KB (legacy portal preset)</option></select><small>Different portals can display different limits. Check the live form.</small></div>
+              <div id="controls" class="controls" hidden><div class="setting"><label for="zoom">Zoom <span id="zoom-value">1.0×</span></label><input type="range" id="zoom" min="1" max="3" step=".05" value="1"/></div>
+                <div class="control-row"><button id="rotate-left" class="control-button" title="Rotate left">↶ Rotate</button><button id="rotate-right" class="control-button" title="Rotate right">↷ Rotate</button><button id="reset-view" class="control-button" title="Reset crop">↺ Reset</button></div>
+                <p class="control-tip">Drag on the photo to reposition. Scroll or slide to zoom.</p></div>
+              <div class="settings-divider"></div><div class="file-promise"><span class="promise-icon">✳</span><div><strong>Real JPEG, verified locally</strong><p>We check exported format, dimensions and file size. Visual requirements still need your review.</p></div></div>
+              <button id="export" class="button primary wide" disabled>Export JPEG <span>↓</span></button>
+              <div id="export-result" class="result" hidden><strong>✓ File prepared</strong><p id="result-meta"></p><a id="download" class="button light wide" download>Download your JPEG ↓</a></div>
+            </div>
+          </div>
+        </div>
+        <p class="safety-note">FormFinish is independent of the Vietnamese government. Technical checks cannot guarantee acceptance or visa approval. <a href="https://evisa.gov.vn/e-visa/foreigners" target="_blank" rel="noopener noreferrer">Official Vietnam e-Visa portal ↗</a></p>
+      </section>
+      <section id="dates" class="section dates-section"><div><span class="kicker">02 / STAY DATE PLANNER</span><h2>Go a little <em>farther.</em></h2><p>Exploring a 90-day stay? Calculate the last calendar day of any stay length without time-zone surprises.</p></div>
+        <div class="date-card"><label for="arrival">Arrival date</label><input type="date" id="arrival" value="2026-12-01"/><label for="days">Planned stay in days (1–90)</label><input type="number" id="days" min="1" max="90" value="90"/><div class="date-output"><span>LAST DAY OF YOUR PLANNED STAY</span><strong id="last-day">—</strong><small id="date-summary">Arrival counts as day one.</small></div><p class="date-caution">Illustrative day-count only. The visa's actual valid-until date and immigration rules control your permitted stay.</p></div>
+      </section>
+      <section id="checks" class="section checklist-section"><div class="section-heading"><div><span class="kicker">03 / PRE-FLIGHT</span><h2>One less thing <em>to forget.</em></h2><p>A short self-review before using the government portal.</p></div></div>
+        <div class="check-grid" id="check-grid">
+          <label class="check-item"><input type="checkbox"/><span>Portrait is recent, in focus, with white background, face forward, no hat or glasses.</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Passport details page is legible; all edges and machine-readable lines are visible.</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Names, passport number and birth date match your passport exactly.</span></label>
+          <label class="check-item"><input type="checkbox"/><span>Arrival and departure details reflect your actual plan.</span></label>
+          <label class="check-item"><input type="checkbox"/><span>You have reviewed the official form's current image limits and visa conditions.</span></label>
+          <label class="check-item"><input type="checkbox"/><span>You have reviewed the official application and fee before submitting.</span></label>
+        </div>
+        <div class="check-footer"><span id="check-progress">0 / 6 checked</span><a href="https://evisa.gov.vn/e-visa/foreigners" target="_blank" rel="noopener noreferrer">Go to official application ↗</a></div>
+      </section>
+      <section id="about" class="section about-section"><span class="kicker">THE PROMISE</span><div class="about-grid"><h2>Your passport stays<br/><em>yours.</em></h2><div><p>Images are processed using your browser's canvas. This tool does not upload, save, or transmit photos to our servers. We do not require an account or use an analytics tracker in this version.</p><p>Formats and limits may change. Check your application portal. FormFinish is an independent preparation utility, not an immigration adviser or visa agency.</p><p class="source-note">Primary official destination: <a href="https://evisa.gov.vn/" target="_blank" rel="noopener noreferrer">evisa.gov.vn ↗</a>. Some older government help pages reference smaller photo size limits, so the export size is adjustable.</p></div></div></section>
+      <section class="pro-note"><div><span class="kicker">WHERE WE'RE HEADED</span><h3>More destinations. More magic.</h3><p>Multi-country document kits and advanced validation are being explored. No payment or premium access is offered yet.</p></div><span>COMING SOON ✦</span></section>
+    </main>
+    <footer class="footer"><span><b>F✦</b> FormFinish <small>Made to move.</small></span><span>Independent travel utility · No documents stored</span><a href="#top">Back to top ↑</a></footer>
+  </div>
+</body>
+</html>
